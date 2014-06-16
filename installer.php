@@ -412,7 +412,8 @@ function create_db($user,$pass,$server,$db_name){
   if (!$link) {
     die('Could not connect: ' . mysql_error());
   }
-  $sql = 'CREATE DATABASE '.$db_name;
+  //$sql = 'CREATE DATABASE '.$db_name;
+  $sql = "CREATE DATABASE IF NOT EXISTS `$db_name`";
   if (mysql_query($sql, $link)) {
     return true;
   } else {
